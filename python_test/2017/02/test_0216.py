@@ -13,6 +13,7 @@ s3 = Student('Lina', 16)
 
 list_student = [s1, s2, s3]
 cmp_ful = operator.attrgetter('age')  # 以此属性排序
+print(cmp_ful)
 list_student.sort(key=cmp_ful)
 list_student = list_student[::-1]
 for obj in list_student:
