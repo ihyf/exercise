@@ -3,6 +3,7 @@ import operator
 
 
 class Student(object):
+
     def __init__(self, name, age):
         self.name = name
         self.age = age
@@ -18,4 +19,3 @@ list_student.sort(key=cmp_ful)
 list_student = list_student[::-1]
 for obj in list_student:
     print(obj.name, obj.age)
-
