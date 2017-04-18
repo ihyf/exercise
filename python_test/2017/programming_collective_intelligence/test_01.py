@@ -123,4 +123,17 @@ def top_matches(prefs, person, n=5, simillarity=sim_pearson):
     return scores[0:n]
 
 
+# 得到商品之间的匹配度
+def transform_prefs(prefs):
+    result = {}
+    for person in prefs:
+        for item in prefs[person]:
+            result.setdefault(item, {})
+            result[item][person] = prefs[person][item]
+    return top_matches(result, 'Superman Returns', n=5)
 
+if __name__ == '__main__':
+    # print(sim_distance(critics, 'Lisa Rose', 'Lisa Rose'))
+    # print(sim_pearson(critics, 'Lisa Rose', 'Gene Seymour'))
+    # print(top_matches(critics, 'Lisa Rose'))
+    print(transform_prefs(critics))
