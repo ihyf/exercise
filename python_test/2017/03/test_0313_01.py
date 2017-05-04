@@ -3,3 +3,4 @@ class L(object):
 a = L()
 setattr(a, 'name', 'hyf')
 print(a.name)
+print(a.__dict__)
