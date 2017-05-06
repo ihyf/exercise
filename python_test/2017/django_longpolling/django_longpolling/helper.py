@@ -1,5 +1,5 @@
 # coding:utf-8
-from Queue import Queue
+from Queue import Queue, Empty
 from threading import Thread
 
 import time
@@ -24,14 +24,11 @@ class Reader(Thread):
     def get_words(self):
         while 1:
             try:
-                words = self._q.get(True, 1000)
+                words = self._q.get(True, 5)
                 if words:
                     return words
-                else:
-                    return 0
-            except Exception:
-                print enumerate
-                self._q.task_done()
+            except Empty:
+                return ''
 
     def set_words(self, num):
         self._q.put(num)
@@ -39,6 +36,6 @@ class Reader(Thread):
     def run(self):
         i = 0
         while 1:
-            time.sleep(4)
+            time.sleep(1)
             self.set_words(i)
             i += 1
