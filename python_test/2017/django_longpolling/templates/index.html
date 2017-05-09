@@ -9,7 +9,7 @@
                 function longpolling() {
                        $.ajax({
                         type:"GET",
-                        url:{% url 'get_photo' %},
+                        url:"http://127.0.0.1:8888/get_photo/",
                         timeout : 6000,
                         data:{},
                         datatype: "json",

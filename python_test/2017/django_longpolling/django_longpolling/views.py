@@ -20,5 +20,10 @@ def get_photo(request):
             words = r.get_words()
             response_data = {'msg': words}
             if words:
-                return HttpResponse(json.dumps(response_data),
+                response = HttpResponse(json.dumps(response_data),
                                     content_type="application/json")
+                response["Access-Control-Allow-Origin"] = "*"
+                response["Access-Control-Allow-Methods"] = "POST, GET, OPTIONS"
+                response["Access-Control-Max-Age"] = "1000"
+                response["Access-Control-Allow-Headers"] = "*"
+                return response
